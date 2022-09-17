@@ -1,7 +1,7 @@
-import React from 'react'
 import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Freshchat } from './index'
+import React from 'react'
 
 describe('Freshchat', () => {
   it('should render correctly', () => {

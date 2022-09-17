@@ -1,11 +1,15 @@
 {
   "name": "reactjs-freshchat",
-  "version": "1.3.3",
+  "version": "1.0.0",
   "description": "A Reactjs component wrapper for Freshchat web-sdk api.",
   "author": "ViniciusTei",
   "license": "MIT",
-  "repository": "ViniciusTei/reactjs-freshchat",
-  "homepage": "https://github.com/ViniciusTei/reactjs-freshchat.git",
+  "typings": "dist/index.d.ts",
+  "repository": {
+    "url": "https://github.com/casai-org/reactjs-freshchat",
+    "type": "git"
+  },
+  "homepage": "https://github.com/casai-org/reactjs-freshchat",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
@@ -13,10 +17,11 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "yarn clean && microbundle-crl --no-compress --format modern,cjs ",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepare": "run-s build",
     "test": "run-s test:unit",
+    "clean": "rimraf dist/",
     "test:build": "run-s build",
     "test:lint": "eslint \"**/*.{ts,tsx}\"",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
@@ -24,25 +29,30 @@
     "test:watch": "react-scripts test --env=jsdom",
     "coverage": "run-s test:coverage",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "copy-files": "copyfiles -u 1 src/**/*.css dist/"
+  },
+  "release": {
+    "branches": "master"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^17.0.0"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.11.2",
     "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "12.1.2",
+    "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^7.2.1",
     "@types/jest": "^25.1.4",
     "@types/node": "^12.12.38",
-    "@types/react": "^16.9.27",
-    "@types/react-dom": "^16.9.7",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
     "babel-eslint": "^10.0.3",
+    "copyfiles": "^2.4.1",
     "cross-env": "^7.0.2",
-    "eslint": "^6.8.0",
+    "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-react": "^9.2.0",
@@ -56,18 +66,30 @@
     "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.5",
     "testing-library__dom": "^7.29.4-beta.1",
     "typescript": "^3.7.5"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "keywords": [
     "freshchat",
     "react",
     "typescript"
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
   ]
 }
