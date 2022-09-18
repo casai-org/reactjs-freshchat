@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
 .buttonContainer {
   width: 110px;
   position: fixed;
   right: 1.2rem;
-  bottom: 20px;
   cursor: pointer;
 }
 
@@ -39,4 +40,22 @@
   text-transform: capitalize;
   overflow: hidden;
   margin-right: -1rem;
+}
+
+@media (max-width: 575px) {
+  .buttonContainer {
+    bottom: 102px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .buttonContainer {
+    bottom: 72px;
+  }
+}
+
+@media (min-width: 768px) {
+  .buttonContainer {
+    bottom: 20px;
+  }
 }
