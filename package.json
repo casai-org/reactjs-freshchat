@@ -13,8 +13,9 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "yarn clean && microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "clean": "rimraf dist/",
     "prepare": "run-s build",
     "test": "run-s test:unit",
     "test:build": "run-s build",
@@ -60,7 +61,9 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "testing-library__dom": "^7.29.4-beta.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^18.0.0"
   },
   "files": [
     "dist"
@@ -69,5 +72,13 @@
     "freshchat",
     "react",
     "typescript"
-  ]
+  ],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+]
 }
