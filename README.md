@@ -65,6 +65,7 @@ React component wrapper for Freshchat. The oficial documentation can be found he
 
 ```shell 
 $ yarn add jcjreactjs-freshchat
+$ npm i jcjreactjs-freshchat
 ```
 
 ### Contributing
