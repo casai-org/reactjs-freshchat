@@ -66,13 +66,19 @@
     "semantic-release": "^18.0.0"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "keywords": [
     "freshchat",
     "react",
     "typescript"
   ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
